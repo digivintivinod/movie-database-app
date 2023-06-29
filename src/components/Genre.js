@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import '../styles/genre.css'
+import "../styles/genre.css";
 
 export default function Genres() {
   const APIKEY = "4e44d9029b1270a757cddc766a1bcb63";
@@ -13,11 +13,10 @@ export default function Genres() {
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${APIKEY}&language=en-US`
       );
       console.log("data", data);
-
       const gen = await data.json();
-
       setGenres(gen?.genres || []);
-    } catch (err) {
+    } 
+    catch (err) {
       console.log("error", err);
     }
   };
@@ -33,17 +32,27 @@ export default function Genres() {
       const movies = await data.json();
       console.log("movies", movies?.results || []);
       setMovies(movies?.results || []);
-    } catch (err) {
+    } 
+    catch (err) {
       console.log("error", err);
     }
   };
   return (
-<>
-      <div style={{fontSize:"30px",textAlign:"center",margin:"20px",padding:"20px"}}>Geners</div>
-      <div>
+    <>
+      <div
+        style={{
+          fontSize: "30px",
+          textAlign: "left",
+          margin: "20px",
+          padding: "20px",
+        }}
+      >
+        Geners
+      </div>
+      <div style={{ textAlign: "center" }}>
         {genres?.map((genre) => (
           <div
-            onClick={() => handleGenreCLick(genre?.id) }
+            onClick={() => handleGenreCLick(genre?.id)}
             key={genre?.id}
             style={{
               display: "inline-block",
@@ -58,29 +67,52 @@ export default function Genres() {
           </div>
         ))}
       </div>
-      {movies?.length > 0 ? <div style={{textAlign:"center",margin:"20px",padding:"20px",fontSize:"30px"}}>Movies List</div> : ""}
-      <div style={{ display: "flex",flexDirection:"row",boxSizing:"border-box"}}>
-        
-
+      {movies?.length > 0 ? (
+        <div
+          style={{
+            textAlign: "left",
+            margin: "20px",
+            padding: "20px",
+            fontSize: "30px",
+          }}
+        >
+          Movies List
+        </div>
+      ) : (
+        ""
+      )}
+      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {movies?.map((movie) => (
-          <div
-            onClick={() => handleGenreCLick(movie?.id)}
-            key={movies?.id}
-          >
-             <Link to={`/movie/${movie.id}`} style={{textDecoration:"none", color:"white"}}>
-            <div className="cards">
-                <img className="cards__img" alt=""src={`https://image.tmdb.org/t/p/w500${movie?movie.poster_path:""}`} />
+          <div onClick={() => handleGenreCLick(movie?.id)} key={movies?.id}>
+            <Link
+              to={`/movie/${movie.id}`}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <div className="cards">
+                <img
+                className="cards__img"
+                alt=""
+                src={`https://image.tmdb.org/t/p/w500${
+                movie ? movie.poster_path : ""
+                }`}
+                />
                 <div className="cards__overlay">
-                    <div className="card__title">{movie?movie.original_title:""}</div>
-                    <div className="card__runtime">
-                        {movie?movie.release_date:""}
-                        <span className="card__rating">{movie?movie.vote_average:""}<i className="fas fa-star" /></span>
-                    </div>
-                    <div className="card__description">{movie ? movie.overview.slice(0,118)+"..." : ""}</div>
+                  <div className="card__title">
+                    {movie ? movie.original_title : ""}
+                  </div>
+                  <div className="card__runtime">
+                    {movie ? movie.release_date : ""}
+                  <span className="card__rating">
+                      {movie ? movie.vote_average : ""}
+                      <i className="fas fa-star" />
+                  </span>
+                  </div>
+                  <div className="card__description">
+                    {movie ? movie.overview.slice(0, 118) + "..." : ""}
+                  </div>
                 </div>
-            </div>
-        </Link>
-            {movie?.title}
+              </div>
+            </Link>
           </div>
         ))}
       </div>
