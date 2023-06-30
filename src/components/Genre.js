@@ -41,7 +41,7 @@ export default function Genres() {
     <>
       <div
         style={{
-          fontSize: "30px",
+          fontSize: "20px",
           textAlign: "left",
           margin: "20px",
           padding: "20px",
@@ -52,6 +52,7 @@ export default function Genres() {
       <div style={{ textAlign: "center" }}>
         {genres?.map((genre) => (
           <div
+            className="active"
             onClick={() => handleGenreCLick(genre?.id)}
             key={genre?.id}
             style={{
@@ -73,7 +74,7 @@ export default function Genres() {
             textAlign: "left",
             margin: "20px",
             padding: "20px",
-            fontSize: "30px",
+            fontSize: "20px",
           }}
         >
           Movies List
@@ -81,7 +82,7 @@ export default function Genres() {
       ) : (
         ""
       )}
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap",marginLeft:"100px" }}>
         {movies?.map((movie) => (
           <div onClick={() => handleGenreCLick(movie?.id)} key={movies?.id}>
             <Link
@@ -110,9 +111,12 @@ export default function Genres() {
                   <div className="card__description">
                     {movie ? movie.overview.slice(0, 118) + "..." : ""}
                   </div>
-                </div>
+                  </div>
+                
               </div>
+             
             </Link>
+            
           </div>
         ))}
       </div>

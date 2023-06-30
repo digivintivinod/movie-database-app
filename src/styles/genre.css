@@ -61,3 +61,8 @@
     font-size: .75rem;
     margin-bottom: 0.25rem;
 }
+
+.active:hover{
+    color:red;
+    background-color: white;
+}
