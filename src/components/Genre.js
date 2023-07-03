@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/genre.css";
+const APIKEY = "4e44d9029b1270a757cddc766a1bcb63";
 
 export default function Genres() {
-  const APIKEY = "4e44d9029b1270a757cddc766a1bcb63";
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
-
+  const [selectedGener, setSelectedGener] = useState();
   const fetchGenre = async () => {
     try {
       const data = await fetch(
@@ -32,6 +32,7 @@ export default function Genres() {
       const movies = await data.json();
       console.log("movies", movies?.results || []);
       setMovies(movies?.results || []);
+      setSelectedGener(id);
     } 
     catch (err) {
       console.log("error", err);
@@ -39,20 +40,13 @@ export default function Genres() {
   };
   return (
     <>
-      <div
-        style={{
-          fontSize: "20px",
-          textAlign: "left",
-          margin: "20px",
-          padding: "20px",
-        }}
-      >
-        Geners
+      <div className="genres_heading">
+        Genres
       </div>
       <div style={{ textAlign: "center" }}>
         {genres?.map((genre) => (
           <div
-            className="active"
+            className={`catagory-tab ${selectedGener === genre.id ? "active" : "inactive"}`}
             onClick={() => handleGenreCLick(genre?.id)}
             key={genre?.id}
             style={{
@@ -69,20 +63,13 @@ export default function Genres() {
         ))}
       </div>
       {movies?.length > 0 ? (
-        <div
-          style={{
-            textAlign: "left",
-            margin: "20px",
-            padding: "20px",
-            fontSize: "20px",
-          }}
-        >
+        <div className="movies_list">
           Movies List
         </div>
       ) : (
         ""
       )}
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap",marginLeft:"100px" }}>
+      <div className="card" >
         {movies?.map((movie) => (
           <div onClick={() => handleGenreCLick(movie?.id)} key={movies?.id}>
             <Link
@@ -102,11 +89,11 @@ export default function Genres() {
                     {movie ? movie.original_title : ""}
                   </div>
                   <div className="card__runtime">
-                    {movie ? movie.release_date : ""}
-                  <span className="card__rating">
+                      {movie ? movie.release_date : ""}
+                    <span className="card__rating">
                       {movie ? movie.vote_average : ""}
                       <i className="fas fa-star" />
-                  </span>
+                    </span>
                   </div>
                   <div className="card__description">
                     {movie ? movie.overview.slice(0, 118) + "..." : ""}

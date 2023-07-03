@@ -9,15 +9,13 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-
         <Routes>
           <Route index element={<Home />}></Route>
-          {/* <Route path={"geners"} element={<Genres />}></Route> */}
+           <Route path={"/geners"} element={<Genres />}></Route>
           <Route path="movie/:id" element={<h1>movie detail page</h1>}></Route>
           <Route path="movie/:type" element={<h1>movies list page</h1>}></Route>
           <Route path="/" element={<h1>Error Page</h1>}></Route>
         </Routes>
-        <Genres/>
       </Router>
     </div>
   );
