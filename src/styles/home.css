@@ -2,11 +2,11 @@
   height: 500px;
 }
 
-.posterImage > img {
+ .posterImage > img {
   margin: auto;
   display: block;
   width: 100%;
-}
+} 
 
 .posterImage__overlay {
   position: absolute;
