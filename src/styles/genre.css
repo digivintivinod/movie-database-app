@@ -1,106 +1,113 @@
 .cards {
-    display: inline-block;
-    transition: transform .2s;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 0.19rem;
-    cursor:pointer;
-    min-width:200px;
-    height:300px;
-    border: 1px solid rgb(99, 99, 99);
+  display: inline-block;
+  transition: transform 0.2s;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.19rem;
+  cursor: pointer;
+  min-width: 200px;
+  height: 300px;
+  border: 1px solid rgb(99, 99, 99);
 }
 
 .cards:hover {
-    transform: scale(1.2);
-    z-index: 1000; 
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  transform: scale(1.2);
+  z-index: 1000;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .cards__img {
-   height: 300px;
+  height: 300px;
 }
 
 .cards__overlay {
-    position: absolute;
-    padding: 0 1rem 1rem 1rem;
-    bottom: 0px;
-    height: 290px;
-    display: flex;
-    flex-direction: column;
-    width: 85%;
-    justify-content: flex-end;
-    background-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,1));
-    opacity: 0;
-    transition: opacity .2s;
-}   
+  position: absolute;
+  padding: 0 1rem 1rem 1rem;
+  bottom: 0px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  justify-content: flex-end;
+  background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
 
 .cards__overlay:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .card__title {
-    font-weight: 900;
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
+  font-weight: 900;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 .card__runtime {
-    font-size: .75rem;
-    margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .card__rating {
-    float: right;
+  float: right;
 }
 
 .card__description {
-    font-style: italic;
-    font-size: .75rem;
-    margin-bottom: 0.25rem;
+  font-style: italic;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .catagory-tab.inactive {
-    display: inline-block;
-    cursor: pointer;
-    border: 0.5px solid white;
-    border-radius: 20px;
-    padding: 8px;
-    margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  border: 0.5px solid white;
+  border-radius: 20px;
+  padding: 8px;
+  margin: 10px;
 }
 
-.catagory-tab:hover,.catagory-tab.active {
-    display: inline-block;
-    cursor: pointer;
-    border: 0.5px solid white;
-    border-radius: 20px;
-    padding: 8px;
-    margin: 10px;
-    color:red;
-    background-color: white;
+.catagory-tab:hover,
+.catagory-tab.active {
+  display: inline-block;
+  cursor: pointer;
+  border: 0.5px solid white;
+  border-radius: 20px;
+  padding: 8px;
+  margin: 10px;
+  color: red;
+  background-color: white;
 }
 
 .movies_list {
-    text-align: left;
-    margin: 20px;
-    padding: 20px;
-    font-size: 20px;
-    font-weight: 900;
-    color:blue;
+  text-align: left;
+  margin: 20px;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 900;
+  color: blue;
 }
 
 .card {
-    display: flex; 
-    flex-direction: row;
-     flex-wrap: wrap;
-     margin-left: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 100px;
 }
 
 .genres_heading {
-    font-size: 20px;
-    text-align: left;
-    margin: 20px;
-    padding: 20px;
-    font-weight: 900;
-    color:blue;
+  font-size: 20px;
+  text-align: left;
+  margin: 20px;
+  padding: 20px;
+  font-weight: 900;
+  color: blue;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
