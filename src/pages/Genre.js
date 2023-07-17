@@ -41,7 +41,6 @@ export default function Genres() {
       const path = `discover/movie?with_genres=${selectedGenerId}&api_key=${process.env.REACT_APP_apiKey}&page=${pageNumber}`;
       const data = await apiGet({ path });
       const movies = await data.json();
-
       setMovieList((prev) => [...prev, ...movies?.results]);
       setPageNumber((pre) => pre + 1);
     } catch (err) {
@@ -49,12 +48,10 @@ export default function Genres() {
     }
   };
 
+
   const handleGenreCLick = async (id) => {
     try {
-      const path = `discover/movie?with_genres=${id}&api_key=${
-        process.env.REACT_APP_apiKey
-      }&page=${1}`;
-
+      const path = `discover/movie?with_genres=${id}&api_key=${process.env.REACT_APP_apiKey}&page=${1}`;
       const data = await apiGet({ path });
       const movies = await data.json();
       setMovies(movies);
@@ -70,6 +67,7 @@ export default function Genres() {
     });
   };
 
+  
   return (
     <>
       {genres?.length ? (
@@ -94,11 +92,6 @@ export default function Genres() {
       ) : null}
       {console.log("movieList", movieList)}
       <div>
-      {/* {movieList?.length > 0 ? (
-        <div className="movies_list">MOVIES LIST</div>
-      ) : (
-        ""
-      )} */}
         <div>
           <InfiniteScroll
             className="content"
@@ -143,42 +136,6 @@ export default function Genres() {
           </InfiniteScroll>
         </div>
       </div>
-      {/* {movies?.length > 0 ? <div className="movies_list">Movies List</div> : ""}
-      <div className="card">
-        {movies?.map((movie) => (
-          <div onClick={() => handleGenreCLick(movie?.id)} key={movies?.id}>
-            <Link
-              to={`/movie/${movie.id}`}
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              <div className="cards">
-                <img
-                  className="cards__img"
-                  alt="cards-img"
-                  src={`https://image.tmdb.org/t/p/w500${
-                    movie ? movie.poster_path : ""
-                  }`}
-                />
-                <div className="cards__overlay">
-                  <div className="card__title">
-                    {movie ? movie.original_title : ""}
-                  </div>
-                  <div className="card__runtime">
-                    {movie ? movie.release_date : ""}
-                    <span className="card__rating">
-                      {movie ? movie.vote_average : ""}
-                      <i className="fas fa-star" />
-                    </span>
-                  </div>
-                  <div className="card__description">
-                    {movie ? movie.overview.slice(0, 118) + "..." : ""}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div> */}
     </>
   );
 }

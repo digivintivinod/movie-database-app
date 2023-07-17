@@ -23,7 +23,7 @@ function Searchbar() {
     }
   };
 
-  console.log(filteredGenre);
+   console.log(filteredGenre);
 
   return (
     <>
